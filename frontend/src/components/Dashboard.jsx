@@ -49,14 +49,14 @@ const Dashboard = ({ token, logout }) => {
             <div className='h-fit w-full flex gap-5 items-center flex-col'>
                 <div className=''>
                     <label>First Name:</label>
-                    <input type="text" value={user.name} readOnly />
+                    <input type="text" value={user.fname} readOnly />
                     <button onClick={() => {
                         setUser({ ...user, fname: prompt("Enter fname") })
                     }}>✒️</button>
                 </div>
                 <div className=''>
                     <label>Last Name:</label>
-                    <input type="text" value={user.name} readOnly />
+                    <input type="text" value={user.lname} readOnly />
                     <button onClick={() => {
                         setUser({ ...user, lname: prompt("Enter lname") })
                     }}>✒️</button>
@@ -88,7 +88,7 @@ const Dashboard = ({ token, logout }) => {
                 </div>
                 <div>
                     <label>Phone:</label>
-                    <input type="number" value={user.year} readOnly />
+                    <input type="number" value={user.phone} readOnly />
                     <button onClick={() => {
                         setUser({ ...user, phone: prompt("Enter year") })
                     }}>✒️</button>
