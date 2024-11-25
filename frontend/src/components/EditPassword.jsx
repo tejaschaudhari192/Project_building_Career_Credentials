@@ -27,6 +27,8 @@ const EditPassword = ({ token }) => {
     return (
         <div>
             <h2>Edit Password</h2>
+            <button onClick={() => navigate('/dashboard')}>Goto Dashboard</button>
+
             <form onSubmit={handleSubmit} className='w-[200px] gap-4 m-10 items-center h-fit flex flex-col'>
                 <div className='flex gap-3'>
                     <label>Username: </label>
@@ -62,6 +64,7 @@ const EditPassword = ({ token }) => {
                 </div>
 
                 <button type="submit">Update Password</button>
+
             </form>
         </div>
     );
