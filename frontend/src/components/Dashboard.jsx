@@ -33,7 +33,10 @@ const Dashboard = ({ token, logout }) => {
             );
             alert('Details updated successfully!');
         } catch (err) {
-            console.error(err);
+            alert(err);
+            if (err.status == 401) {
+                navigate('/login')
+            }
         }
     };
 
