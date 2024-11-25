@@ -46,7 +46,7 @@ const Dashboard = ({ token, logout }) => {
                 <h1 >Dashboard</h1>
                 <div className='gap-10 flex'>
                     <button onClick={() => navigate('/todo')}>Tasks</button>
-                <button onClick={()=> navigate('/edit-password')}>Update Password</button>
+                    <button onClick={() => navigate('/edit-password')}>Update Password</button>
                     <button onClick={logout}>Logout</button>
                 </div>
             </div>
@@ -98,7 +98,7 @@ const Dashboard = ({ token, logout }) => {
                     }}>✒️</button>
                 </div>
                 <button onClick={updateDetails}>Save</button>
-                
+
             </div>
         </div>
     );

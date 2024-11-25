@@ -66,7 +66,9 @@ const Todo = ({ token }) => {
 
     return (
         <div>
+            
             <h1>Your To-Do List</h1>
+            <button onClick={() => navigate('/')}>Goto Dashboard</button>
 
             {todos.length < 1 ? '' : (
                 <table className="w-10/12 border border-gray-300 text-center">
