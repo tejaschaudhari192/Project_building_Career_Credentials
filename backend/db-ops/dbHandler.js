@@ -119,8 +119,8 @@ function updateUserPassword(req, res) {
     ('updating pass');
 
     myDB.query(
-        `SELECT password FROM users WHERE username = ?`,
-        [username],
+        `SELECT password FROM users WHERE id = ?`,
+        [req.userId],
         (err, results) => {
             if (err) return res.status(500).send({ message: err.message });
 
