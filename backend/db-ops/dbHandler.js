@@ -119,13 +119,16 @@ function updateUserPassword(req, res) {
     ('updating pass');
 
     myDB.query(
-        `SELECT password FROM users WHERE id = ?`,
-        [req.userId],
+        `SELECT password FROM users WHERE username = ?`,
+        [username],
         (err, results) => {
             if (err) return res.status(500).send({ message: err.message });
 
             const user = results[0];
-            if (md5(currentPassword) != md5(user.password)) {
+            if (md5(currentPassword) != user.password) {
+
+                // console.log(md5(currentPassword) , user.password);
+                
                 return res.status(401).send({ message: 'Current password is incorrect!' });
             }
 
