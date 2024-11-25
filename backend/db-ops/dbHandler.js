@@ -99,14 +99,13 @@ function updateTodo(req, res) {
 }
 
 function updateUserDetails(req, res) {
-    const { fname, lname, branch, degree, year } = req.body;
+    const { fname, lname, phone, branch, degree, year } = req.body;
 
     myDB.query(
-        `UPDATE users SET fname = ?,lname = ? , branch = ?, degree = ?, year = ? WHERE id = ?`,
-        [fname, lname, branch, degree, year, req.userId],
+        `UPDATE users SET fname = ?,lname = ? ,phone = ?, branch = ?, degree = ?, year = ? WHERE id = ?`,
+        [fname, lname,phone, branch, degree, year, req.userId],
         (err) => {
             if (err) {
-                console.log(err);
 
                 return res.status(500).send({ message: err.message });
             }
@@ -150,7 +149,7 @@ function getDetails(req, res) {
         [req.userId],
         (err, results) => {
             console.log(err);
-            
+
             if (err) return res.status(500).send({ message: err.message });
             if (results.length === 0) {
                 return res.status(404).send({ message: 'User not found!' });

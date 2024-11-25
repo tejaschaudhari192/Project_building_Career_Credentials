@@ -88,9 +88,9 @@ const Dashboard = ({ token, logout }) => {
                 </div>
                 <div>
                     <label>Phone:</label>
-                    <input type="number" value={user.phone} readOnly />
+                    <input type="text" value={user.phone} readOnly />
                     <button onClick={() => {
-                        setUser({ ...user, phone: prompt("Enter year") })
+                        setUser({ ...user, phone: prompt("Enter Phone") })
                     }}>✒️</button>
                 </div>
                 <button onClick={updateDetails}>Save</button>
