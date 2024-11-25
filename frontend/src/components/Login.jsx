@@ -38,7 +38,7 @@ const Login = ({ setToken }) => {
                 </p>
             </form>
 
-            <button onClick={() => navigate('/edit-password')}>Update Password</button>
+            {/* <button onClick={() => navigate('/edit-password')}>Update Password</button> */}
         </div>
     );
 };

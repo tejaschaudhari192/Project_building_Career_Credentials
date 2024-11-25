@@ -17,7 +17,8 @@ const EditPassword = ({ token }) => {
                 { username, currentPassword, newPassword },
                 { headers: { Authorization: token } }
             );
-            navigate('/login');
+            // navigate('/login');
+            alert('updated')
         } catch (err) {
             alert(err)
         }

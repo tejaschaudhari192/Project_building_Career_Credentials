@@ -125,7 +125,7 @@ function updateUserPassword(req, res) {
             if (err) return res.status(500).send({ message: err.message });
 
             const user = results[0];
-            if (md5(currentPassword) == md5(user.password)) {
+            if (md5(currentPassword) != md5(user.password)) {
                 return res.status(401).send({ message: 'Current password is incorrect!' });
             }
 

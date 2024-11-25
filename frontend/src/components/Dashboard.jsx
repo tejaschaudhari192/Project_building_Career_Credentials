@@ -94,6 +94,8 @@ const Dashboard = ({ token, logout }) => {
                     }}>✒️</button>
                 </div>
                 <button onClick={updateDetails}>Save</button>
+                <button onClick={()=> navigate('/edit-password')}>Update Password</button>
+                
             </div>
         </div>
     );
