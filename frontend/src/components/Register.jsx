@@ -6,23 +6,21 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(API_URL+'/auth/register', { username, email, password });
+            await axios.post(API_URL + '/auth/register', { username, email, password });
             navigate('/login');
         } catch (err) {
-            setError(err);
+            alert(err)
         }
     };
 
     return (
         <div>
             <h1>Register</h1>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit} className='w-[200px] gap-4 m-10 items-center h-fit flex flex-col'>
                 <input
                     type="text"
@@ -53,6 +51,7 @@ const Register = () => {
                     </span>
                 </p>
             </form>
+
         </div>
     );
 };
