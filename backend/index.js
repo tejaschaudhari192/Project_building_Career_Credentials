@@ -19,7 +19,7 @@ var corsOptions = {
     optionSuccessStatus: 200
 }
 
-app.use(cors(corsOptions))
+app.use(cors())
 
 app.use('/auth', authRoutes);
 app.use('/todos', todosRoutes);
