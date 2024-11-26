@@ -17,7 +17,6 @@ myDB.connect((err) => {
         console.log(err);
     else
         console.log("Connected Successfully");
-
 })
 
 // const myDB = db.createPool({
