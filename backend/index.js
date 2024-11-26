@@ -25,7 +25,6 @@ app.use('/auth', authRoutes);
 app.use('/todos', todosRoutes);
 
 
-
 app.listen(PORT, () => {
     console.log("Server Running on ", PORT);
 })
