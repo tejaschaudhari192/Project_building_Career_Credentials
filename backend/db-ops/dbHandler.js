@@ -11,6 +11,15 @@ const myDB = db.createConnection({
     database: "bbpg7azfylbddolh8i3v",
     port: 3306
 });
+
+myDB.connect((err) => {
+    if (err)
+        console.log(err);
+    else
+        console.log("Connected Successfully");
+
+})
+
 // const myDB = db.createPool({
 //     connectionLimit: 10,
 //     host: "localhost",
@@ -38,6 +47,8 @@ function registerUser(req, res) {
 function loginUser(req, res) {
     const { username, password } = req.body;
     const hashedPassword = md5(password);
+    console.log('logging');
+    
 
     myDB.query(
         'SELECT * FROM users WHERE username = ?',
@@ -103,7 +114,7 @@ function updateUserDetails(req, res) {
 
     myDB.query(
         `UPDATE users SET fname = ?,lname = ? ,phone = ?, branch = ?, degree = ?, year = ? WHERE id = ?`,
-        [fname, lname,phone, branch, degree, year, req.userId],
+        [fname, lname, phone, branch, degree, year, req.userId],
         (err) => {
             if (err) {
 
@@ -128,7 +139,7 @@ function updateUserPassword(req, res) {
             if (md5(currentPassword) != user.password) {
 
                 // console.log(md5(currentPassword) , user.password);
-                
+
                 return res.status(401).send({ message: 'Current password is incorrect!' });
             }
 
@@ -151,10 +162,10 @@ function getDetails(req, res) {
         `SELECT fname,lname,email,phone, branch, degree, year FROM users WHERE id = ?`,
         [req.userId],
         (err, results) => {
-            console.log(err);
-
-            if (err) return res.status(500).send({ message: err.message });
-            if (results.length === 0) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({ message: err.message });
+            } if (results.length === 0) {
                 return res.status(404).send({ message: 'User not found!' });
             }
             res.status(200).send(results[0]);

@@ -25,9 +25,10 @@ const EditPassword = ({ token }) => {
     };
 
     return (
-        <div>
-            <h2>Edit Password</h2>
-            <button onClick={() => navigate('/dashboard')}>Goto Dashboard</button>
+        <div className='flex flex-col text-center items-center gap-5'>
+<div className=''></div>
+            <h1>Edit Password</h1>
+            <button className='w-fit' onClick={() => navigate('/dashboard')}>Goto Dashboard</button>
 
             <form onSubmit={handleSubmit} className='w-[200px] gap-4 m-10 items-center h-fit flex flex-col'>
                 <div className='flex gap-3'>

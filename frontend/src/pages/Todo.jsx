@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../config';
+import { useNavigate } from 'react-router-dom';
 
 const Todo = ({ token }) => {
     token = localStorage.getItem('token')
     const [todos, setTodos] = useState([]);
     const [task, setTask] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchTodos();
@@ -13,7 +15,7 @@ const Todo = ({ token }) => {
 
     const fetchTodos = async () => {
         try {
-            const res = await axios.get(API_URL+'/todos', {
+            const res = await axios.get(API_URL + '/todos', {
                 headers: { Authorization: token },
             });
             setTodos(res.data);
@@ -25,7 +27,7 @@ const Todo = ({ token }) => {
     const addTodo = async () => {
         try {
             const res = await axios.post(
-                API_URL+'/todos/',
+                API_URL + '/todos/',
                 { task },
                 { headers: { Authorization: token } }
             );
@@ -39,7 +41,7 @@ const Todo = ({ token }) => {
     const deleteTodo = async (id) => {
         try {
             const res = await axios.delete(
-                API_URL+`/todos/${id}`,
+                API_URL + `/todos/${id}`,
                 { headers: { Authorization: token } }
             );
 
@@ -54,7 +56,7 @@ const Todo = ({ token }) => {
     const toggleComplete = async (id, completed) => {
         try {
             await axios.put(
-                API_URL+`/todos/${id}`,
+                API_URL + `/todos/${id}`,
                 { completed: !completed },
                 { headers: { Authorization: token } }
             );
@@ -65,10 +67,10 @@ const Todo = ({ token }) => {
     };
 
     return (
-        <div>
-            
+        <div className='w-full flex flex-col gap-10 items-center'>
+
             <h1>Your To-Do List</h1>
-            <button onClick={() => navigate('/dashboard')}>Goto Dashboard</button>
+            <button className='w-fit' onClick={() => navigate('/dashboard')}>Goto Dashboard</button>
 
             {todos.length < 1 ? '' : (
                 <table className="w-10/12 border border-gray-300 text-center">
@@ -113,13 +115,17 @@ const Todo = ({ token }) => {
                 </table>
             )}
 
-            <input
-                type="text"
-                placeholder="Add a new task"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-            />
-            <button onClick={addTodo}>Add</button>
+            <div className='flex gap-5'>
+
+
+                <input
+                    type="text"
+                    placeholder="Add a new task"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                />
+                <button className='w-fit' onClick={addTodo}>Add</button>
+            </div>
         </div>
     );
 };

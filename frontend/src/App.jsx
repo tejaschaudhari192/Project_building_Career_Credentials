@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import Dashboard from './components/Dashboard';
-import EditPassword from './components/EditPassword';
-import Todo from './components/Todo';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import EditPassword from './pages/EditPassword';
+import Todo from './pages/Todo';
 import './App.css'
 
 function App() {
