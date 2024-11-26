@@ -38,7 +38,10 @@ function registerUser(req, res) {
         'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
         [username, email, hashedPassword],
         (err) => {
-            if (err) return res.status(500).send({ message: err.message });
+            if (err) {
+                console.log(err);
+                return res.status(500).send({ message: err.message });
+            }
             res.status(201).send({ message: 'User registered successfully!' });
         }
     );
@@ -54,7 +57,10 @@ function loginUser(req, res) {
         'SELECT * FROM users WHERE username = ?',
         [username],
         (err, results) => {
-            if (err) return res.status(500).send({ message: err.message });
+            if (err) {
+                console.log(err);
+                return res.status(500).send({ message: err.message });
+            }
             if (results.length === 0)
                 return res.status(404).send({ message: 'no user' });
 
