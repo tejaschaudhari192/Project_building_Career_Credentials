@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const SECRET = 'ITS SECRET';
 
-const myDB = db.createConnection({
+const myDB = db.createPool({
     host: "bbpg7azfylbddolh8i3v-mysql.services.clever-cloud.com",
     user: "uglr56rn1tuczhqy",
     password: "PNpCw03xCunCCyGc2kVG",
@@ -12,12 +12,12 @@ const myDB = db.createConnection({
     port: 3306
 });
 
-myDB.connect((err) => {
-    if (err)
-        console.log(err);
-    else
-        console.log("Connected Successfully");
-})
+// myDB.connect((err) => {
+//     if (err)
+//         console.log(err);
+//     else
+//         console.log("Connected Successfully");
+// })
 
 // const myDB = db.createPool({
 //     connectionLimit: 10,
